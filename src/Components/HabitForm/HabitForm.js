@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { DropzoneArea } from 'react-dropzone';
+import React, { useState ,useCallback} from 'react';
+import { useDropzone } from 'react-dropzone';
+
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
@@ -16,9 +17,11 @@ const AddHabitForm = ({ onAddHabit }) => {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileSelect = (files) => {
-    setSelectedFile(files[0]);
-  };
+  const onDrop = useCallback((acceptedFiles) => {
+    setSelectedFile(acceptedFiles[0]);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const handleFileUpload = async () => {
     try {
@@ -74,14 +77,21 @@ const AddHabitForm = ({ onAddHabit }) => {
         <input type="text" name="name" value={habit.name} onChange={handleChange} required />
       </div>
       <div>
+      <div>
       <h2>Image Uploader</h2>
-      <DropzoneArea
-        acceptedFiles={['image/*']}
-        filesLimit={1}
-        onChange={handleFileSelect}
-        value={habit.url}
-      />
+      <div {...getRootProps()}>
+        <input {...getInputProps()} value={habit.url}/>
+        {isDragActive ? (
+          <p>Drop the image here...</p>
+        ) : (
+          <p>Drag and drop an image here, or click to select a file</p>
+        )}
+        
+      </div>
+      {selectedFile && <p>Selected file: {selectedFile.name}</p>}
       <Button onClick={handleFileUpload}>Upload</Button>
+    </div>
+     
     </div>
       <div>
         <label>Ingredients:</label>
