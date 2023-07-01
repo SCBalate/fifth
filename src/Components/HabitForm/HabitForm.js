@@ -12,7 +12,6 @@ const AddHabitForm = ({ onAddHabit }) => {
     url: '',
     Ingredients: '',
     Method: '',
-    
   });
 
   const [selectedFile, setSelectedFile] = useState(null);
