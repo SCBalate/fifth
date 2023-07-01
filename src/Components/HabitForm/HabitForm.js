@@ -97,17 +97,17 @@ const AddHabitForm = ({ onAddHabit }) => {
         <label>Ingredients:</label>
         <input
           type="text"
-          name="frequency"
+          name="Ingredients"
           value={habit.Ingredients}
           onChange={handleChange}
           required
         />
       </div>
       <div>
-        <label>Start Date:</label>
+        <label>Method:</label>
         <input
           type="text"
-          name="startDate"
+          name="Method"
           value={habit.Method}
           onChange={handleChange}
           required
