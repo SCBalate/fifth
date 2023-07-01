@@ -29,18 +29,18 @@ const HabitList = ({ habits, onEditHabit, onDeleteHabit, onAddHabit}) => {
   //   onArchieveHabit(habit);
   // };
 
-  const handleAddHabit = () => {
+  // const handleAddHabit = () => {
    
-    const newHabit = {
-      id: Math.random().toString(),
-      name: 'New Habit',
-      goal: 'New Habit Goal',
-      frequency: 'New Habit Frequency',
-      startDate: 'New Habit Start Date',
-      endDate: 'New Habit End Date',
-    };
-    onAddHabit(newHabit);
-  };
+  //   const newHabit = {
+  //     id: Math.random().toString(),
+  //     name: 'New Habit',
+  //     goal: 'New Habit Goal',
+  //     frequency: 'New Habit Frequency',
+  //     startDate: 'New Habit Start Date',
+  //     endDate: 'New Habit End Date',
+  //   };
+  //   onAddHabit(newHabit);
+  // };
 
 
   const navigate = useNavigate();
